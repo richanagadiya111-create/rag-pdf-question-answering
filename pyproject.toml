@@ -1,0 +1,20 @@
+[project]
+name = "rag-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Richa Nagadiya", email = "richanagadiya111@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "langchain-community>=0.4.2",
+    "langchain-core>=1.6.11",
+]
+
+[project.scripts]
+rag-project = "rag_project:main"
+
+[build-system]
+requires = ["uv_build>=0.12.23,<0.13.0"]
+build-backend = "uv_build"

@@ -1,0 +1,29 @@
+# Environment variables and secrets
+.env
+.env.*
+
+# Python-generated files
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+wheels/
+
+# Virtual environments
+.venv/
+venv/
+
+# Generated vector databases
+chroma_db/
+vectore_store/
+
+# IDE files
+.vscode/
+
+# Separate chatbot project
+chatbot.py
+
+# Local sample documents
+docloaders/*.pdf
+docloaders/file1.txt

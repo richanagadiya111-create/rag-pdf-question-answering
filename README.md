@@ -1,64 +1,113 @@
-﻿# Chat with Your PDF 📚
+﻿# RAG-Based PDF Question Answering System
 
-A Retrieval-Augmented Generation (RAG) application that allows users to upload a PDF and ask questions about its content using Generative AI.
+## About the Project
+
+This project is a Retrieval-Augmented Generation (RAG) application that allows users to ask questions about information contained in PDF documents.
+
+It uses Python and LangChain to process documents, Hugging Face embeddings to represent text as vectors, Chroma as a vector store, and a Groq-hosted language model to generate answers using retrieved document context.
+
+The project also includes a Streamlit interface for interacting with the question-answering system.
 
 ## Features
 
-- Upload a PDF file.
-- Extract and split PDF text into chunks.
-- Generate embeddings using Hugging Face.
-- Store and retrieve document chunks using ChromaDB.
-- Ask questions about the uploaded PDF.
-- Generate answers using the Groq LLM.
-- Display chat history and source page numbers.
-- Clear chat history.
-- Download chat history.
+* Load and process PDF documents.
+* Split document text into smaller chunks.
+* Generate embeddings using Hugging Face.
+* Store document embeddings in Chroma.
+* Retrieve relevant text chunks using a retriever.
+* Generate answers using a language model through Groq.
+* Provide a Streamlit interface for asking questions about document content.
 
 ## Technologies Used
 
-- Python
-- Streamlit
-- LangChain
-- Groq API
-- Hugging Face Embeddings
-- ChromaDB
-- PyPDF
-
-## Project Structure
-
-- `app.py` — Streamlit user interface.
-- `main.py` — Question-answering logic.
-- `databse_file.py` — PDF processing, embeddings, and vector storage.
-- `requirements.txt` — Python dependencies.
-- `docloaders/` — PDF documents used for testing.
-
-## Installation
-
-1. Clone this repository and open its folder.
-2. Create and activate a Python virtual environment.
-3. Install dependencies:
-
-   `python -m pip install -r requirements.txt`
-
-4. Create a `.env` file in the project root:
-
-   `GROQ_API_KEY=your_groq_api_key_here`
-
-5. Start the application:
-
-   `streamlit run app.py`
+* Python
+* LangChain
+* Streamlit
+* PyPDF
+* Hugging Face Embeddings
+* Chroma Vector Database
+* Groq API
+* Sentence Transformers
 
 ## How It Works
 
-1. Upload a PDF.
-2. Extract and split its text into chunks.
-3. Generate embeddings using Hugging Face.
-4. Store and retrieve relevant chunks using ChromaDB.
-5. Pass the retrieved context to the Groq language model.
-6. Display the answer and relevant source pages.
+The application follows a Retrieval-Augmented Generation workflow:
 
-## Purpose
+1. **Document Loading:** Extract text from a PDF document.
+2. **Text Splitting:** Divide the extracted text into smaller chunks using `RecursiveCharacterTextSplitter`.
+3. **Embedding Generation:** Convert text chunks into vector representations using Hugging Face embeddings.
+4. **Vector Storage:** Store the embeddings in Chroma.
+5. **Retrieval:** Find relevant document chunks for a user's question.
+6. **Answer Generation:** Send the question and retrieved context to a language model through Groq.
+7. **Response Display:** Display the generated answer through the application interface.
 
-This project demonstrates how Retrieval-Augmented Generation (RAG) can be used to build a PDF question-answering application.
+## Installation
 
+### 1. Clone the Repository
 
+```bash
+git clone https://github.com/YOUR-USERNAME/rag-pdf-question-answering.git
+cd rag-pdf-question-answering
+```
+
+Replace `YOUR-USERNAME` with your GitHub username.
+
+### 2. Create a Virtual Environment
+
+```bash
+python -m venv .venv
+```
+
+Activate it in Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+### 3. Install Dependencies
+
+Install the packages required by the project. For example:
+
+```bash
+pip install streamlit langchain langchain-community langchain-text-splitters langchain-huggingface langchain-chroma langchain-groq pypdf sentence-transformers python-dotenv
+```
+
+### 4. Configure the API Key
+
+Create a `.env` file in the project root:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+```
+
+Replace the placeholder with your actual API key.
+
+**Security:** Never upload your `.env` file or expose your API key on GitHub.
+
+### 5. Run the Application
+
+```bash
+streamlit run app.py
+```
+
+Open the local address displayed in the terminal to use the application.
+
+## Concepts Practised
+
+* Retrieval-Augmented Generation (RAG)
+* Large Language Models (LLMs)
+* Document loading and text chunking
+* Text embeddings
+* Vector databases
+* Information retrieval
+* Prompt templates and context-based answering
+* LangChain integration
+* Streamlit application development
+
+## Future Improvements
+
+* Support multiple PDF documents.
+* Display relevant source passages alongside answers.
+* Improve retrieval accuracy.
+* Add chat history.
+* Deploy the application online.
